@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jackboberg/bring-it#readme",
   "devDependencies": {
+    "code": "~1.5.0",
     "lab": "~7.0.0"
   }
 }
