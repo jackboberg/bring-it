@@ -4,7 +4,10 @@
   "description": "Simplifies installing and adding multiple npm modules to your git repository.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coverage": "lab -r html -o coverage/index.html -r lcov -o coverage/lcov.info",
+    "lint": "standard",
+    "posttest": "npm run lint",
+    "test": "lab -c"
   },
   "repository": {
     "type": "git",
