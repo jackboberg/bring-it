@@ -37,8 +37,8 @@ BringIt(modules, options, done)
 
 #### Parameters
 
-- `modules` modules to install (Array)
-- `options` command line options (String || Array)
+- `modules` modules to install (String || Array)
+- `options` command line options [Optional] (String || Array)
 - `done` yields Error and Boolean (Function)
 
 

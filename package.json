@@ -1,0 +1,33 @@
+{
+  "name": "bring-it",
+  "version": "0.0.0",
+  "description": "Simplifies installing and adding multiple npm modules to your git repository.",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "lab -r html -o coverage/index.html -r lcov -o coverage/lcov.info",
+    "lint": "standard",
+    "posttest": "npm run lint",
+    "test": "lab -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackboberg/bring-it.git"
+  },
+  "keywords": [
+    "npm",
+    "install",
+    "git",
+    "pretty-repo"
+  ],
+  "author": "Jack Boberg <hello@jackboberg.info> (http://jackboberg.info/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackboberg/bring-it/issues"
+  },
+  "homepage": "https://github.com/jackboberg/bring-it#readme",
+  "devDependencies": {
+    "code": "~1.5.0",
+    "lab": "~7.0.0",
+    "standard": "~5.3.1"
+  }
+}
