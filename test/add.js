@@ -4,7 +4,7 @@ const Code = require('code')
 const Lab = require('lab')
 const Sinon = require('sinon')
 
-const Install = require('../lib/install')
+const Add = require('../lib/add')
 
 var lab = exports.lab = Lab.script()
 
@@ -27,24 +27,23 @@ afterEach(function (done) {
   done()
 })
 
-describe('install', () => {
-  var module, options
+describe('add', () => {
+  var options
 
   beforeEach((done) => {
-    module = 'test'
-    options = '-D'
+    options = {}
 
     done()
   })
 
   it('exports a function', (done) => {
-    expect(Install).to.be.a.function()
+    expect(Add).to.be.a.function()
     done()
   })
 
-  it('uses npm to install the module', function (done) {
-    Install(module, options, function () {
-      expect(CP.spawn.calledWith('npm', ['install', 'test', '-D'])).to.be.true()
+  it('adds the pacakge to the git index', function (done) {
+    Add(options, function () {
+      expect(CP.spawn.calledWith('git', ['add', 'package.json'])).to.be.true()
       done()
     })
   })

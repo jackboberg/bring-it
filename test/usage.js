@@ -1,7 +1,10 @@
 const Code = require('code')
 const Lab = require('lab')
+const Sinon = require('sinon')
 
-const Instagit = require('..')
+const Instagit = require('..', {
+  './lib/instagit': Sinon.stub().yields()
+})
 
 var lab = exports.lab = Lab.script()
 
@@ -62,6 +65,15 @@ describe('usage', () => {
     it('accepts an array', (done) => {
       fn = () => Instagit(modules, [], cb)
       expect(fn).to.not.throw()
+
+      done()
+    })
+
+    it('requires a String or Array', (done) => {
+      [void 0, null, {}, Function.prototype].forEach((el) => {
+        fn = () => Instagit(modules, el, cb)
+        expect(fn).to.throw('options must be String or Array')
+      })
 
       done()
     })
