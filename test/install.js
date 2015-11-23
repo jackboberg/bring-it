@@ -15,7 +15,9 @@ var afterEach = lab.afterEach
 var expect = Code.expect
 
 beforeEach(function (done) {
-  var cp = CP.spawn('sleep', ['0.001'])
+  var cp = {
+    on: Sinon.stub().withArgs('exit').yields()
+  }
   Sinon.stub(CP, 'spawn').returns(cp)
   done()
 })
@@ -26,12 +28,11 @@ afterEach(function (done) {
 })
 
 describe('install', () => {
-  var module, options, proc
+  var module, options
 
   beforeEach((done) => {
     module = 'test'
     options = '-D'
-    proc = CP.spawn('echo Test')
 
     done()
   })
@@ -41,15 +42,10 @@ describe('install', () => {
     done()
   })
 
-  it('returns a child process', function (done) {
-    proc = Install(module, options)
-    expect(proc.constructor.name).to.equal('ChildProcess')
-    proc.on('exit', done)
-  })
-
   it('uses npm to install the module', function (done) {
-    proc = Install(module, options)
-    expect(CP.spawn.calledWith('npm', ['install', 'test', '-D'])).to.be.true()
-    proc.on('exit', done)
+    Install(module, options, function () {
+      expect(CP.spawn.calledWith('npm', ['install', 'test', '-D'])).to.be.true()
+      done()
+    })
   })
 })

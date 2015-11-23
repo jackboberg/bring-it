@@ -1,7 +1,10 @@
 const Code = require('code')
 const Lab = require('lab')
+const Sinon = require('sinon')
 
-const Instagit = require('..')
+const Instagit = require('..', {
+  './lib/instagit': Sinon.stub().yields()
+})
 
 var lab = exports.lab = Lab.script()
 
