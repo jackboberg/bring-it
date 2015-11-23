@@ -1,5 +1,5 @@
 {
-  "name": "bring-it",
+  "name": "instagit",
   "version": "0.0.0",
   "description": "Simplifies installing and adding multiple npm modules to your git repository.",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jackboberg/bring-it.git"
+    "url": "git+https://github.com/jackboberg/instagit.git"
   },
   "keywords": [
     "npm",
@@ -22,9 +22,9 @@
   "author": "Jack Boberg <hello@jackboberg.info> (http://jackboberg.info/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jackboberg/bring-it/issues"
+    "url": "https://github.com/jackboberg/instagit/issues"
   },
-  "homepage": "https://github.com/jackboberg/bring-it#readme",
+  "homepage": "https://github.com/jackboberg/instagit#readme",
   "devDependencies": {
     "code": "~1.5.0",
     "lab": "~7.0.0",

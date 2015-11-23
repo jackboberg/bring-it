@@ -1,10 +1,10 @@
-# bring-it
+# instagit
 
 Simplifies installing and adding multiple npm modules to your git repository.
 
 ## Usage
 
-`bring-it lab code standard -D`
+`instagit lab code standard -D`
 
 ## Why
 
@@ -25,14 +25,14 @@ I love a pretty git log, but I got tired of typing stuff like this:
 
 ## Install
 
-`npm install bring-it --global`
+`npm install instagit --global`
 
 
 ## Node API
 
 ```
-const BringIt = require('bring-it')
-BringIt(modules, options, done)
+const Instagit = require('instagit')
+Instagit(modules, options, done)
 ```
 
 #### Parameters

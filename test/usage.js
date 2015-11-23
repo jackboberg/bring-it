@@ -1,7 +1,7 @@
 const Code = require('code')
 const Lab = require('lab')
 
-const BringIt = require('..')
+const Instagit = require('..')
 
 var lab = exports.lab = Lab.script()
 
@@ -22,20 +22,20 @@ describe('usage', () => {
   })
 
   it('exports a function', (done) => {
-    expect(BringIt).to.be.a.function()
+    expect(Instagit).to.be.a.function()
     done()
   })
 
   describe('modules', () => {
     it('accepts a string', (done) => {
-      fn = () => BringIt('', cb)
+      fn = () => Instagit('', cb)
       expect(fn).to.not.throw()
 
       done()
     })
 
     it('accepts an array', (done) => {
-      fn = () => BringIt([], cb)
+      fn = () => Instagit([], cb)
       expect(fn).to.not.throw()
 
       done()
@@ -43,7 +43,7 @@ describe('usage', () => {
 
     it('requires a String or Array', (done) => {
       [void 0, null, {}, Function.prototype].forEach((el) => {
-        fn = () => BringIt(el, cb)
+        fn = () => Instagit(el, cb)
         expect(fn).to.throw('modules must be String or Array')
       })
 
@@ -53,14 +53,14 @@ describe('usage', () => {
 
   describe('options', () => {
     it('accepts a string', (done) => {
-      fn = () => BringIt(modules, '', cb)
+      fn = () => Instagit(modules, '', cb)
       expect(fn).to.not.throw()
 
       done()
     })
 
     it('accepts an array', (done) => {
-      fn = () => BringIt(modules, [], cb)
+      fn = () => Instagit(modules, [], cb)
       expect(fn).to.not.throw()
 
       done()
@@ -69,7 +69,7 @@ describe('usage', () => {
 
   describe('done', () => {
     it('requires a callback', (done) => {
-      fn = () => BringIt(modules, options)
+      fn = () => Instagit(modules, options)
       expect(fn).to.throw('must provide callback')
 
       done()
