@@ -65,6 +65,15 @@ describe('usage', () => {
 
       done()
     })
+
+    it('requires a String or Array', (done) => {
+      [void 0, null, {}, Function.prototype].forEach((el) => {
+        fn = () => Instagit(modules, el, cb)
+        expect(fn).to.throw('options must be String or Array')
+      })
+
+      done()
+    })
   })
 
   describe('done', () => {
