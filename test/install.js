@@ -25,7 +25,7 @@ afterEach(function (done) {
   done()
 })
 
-describe('usage', () => {
+describe('install', () => {
   var module, options, proc
 
   beforeEach((done) => {
