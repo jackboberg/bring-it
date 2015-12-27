@@ -1,10 +1,12 @@
-const CP = require('child_process')
-
 const Code = require('code')
 const Lab = require('lab')
+const Proxyquire = require('proxyquire')
 const Sinon = require('sinon')
 
-const Add = require('../lib/add')
+var spawn = Sinon.stub()
+const Add = Proxyquire('../lib/add', {
+  './spawn': spawn
+})
 
 var lab = exports.lab = Lab.script()
 
@@ -15,36 +17,42 @@ var afterEach = lab.afterEach
 var expect = Code.expect
 
 beforeEach(function (done) {
-  var cp = {
-    on: Sinon.stub().withArgs('exit').yields()
-  }
-  Sinon.stub(CP, 'spawn').returns(cp)
+  spawn.yields()
   done()
 })
 
 afterEach(function (done) {
-  CP.spawn.restore()
+  spawn.reset()
   done()
 })
 
 describe('add', () => {
-  var options
-
-  beforeEach((done) => {
-    options = {}
-
-    done()
-  })
-
   it('exports a function', (done) => {
     expect(Add).to.be.a.function()
     done()
   })
 
-  it('adds the pacakge to the git index', function (done) {
-    Add(options, function () {
-      expect(CP.spawn.calledWith('git', ['add', 'package.json'])).to.be.true()
+  it('adds the package to the git index', function (done) {
+    Add(function () {
+      expect(spawn.calledWith('git', ['add', 'package.json'])).to.be.true()
       done()
+    })
+  })
+
+  describe('when spawn yields an error', function () {
+    var error
+
+    beforeEach(function (done) {
+      error = new Error('spawn err')
+      spawn.yields(error)
+      done()
+    })
+
+    it('yields the error', function (done) {
+      Add(function (err) {
+        expect(err).to.equal(error)
+        done()
+      })
     })
   })
 })

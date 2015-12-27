@@ -1,10 +1,12 @@
-const CP = require('child_process')
-
 const Code = require('code')
 const Lab = require('lab')
+const Proxyquire = require('proxyquire')
 const Sinon = require('sinon')
 
-const Install = require('../lib/install')
+var spawn = Sinon.stub()
+const Install = Proxyquire('../lib/install', {
+  './spawn': spawn
+})
 
 var lab = exports.lab = Lab.script()
 
@@ -15,15 +17,12 @@ var afterEach = lab.afterEach
 var expect = Code.expect
 
 beforeEach(function (done) {
-  var cp = {
-    on: Sinon.stub().withArgs('exit').yields()
-  }
-  Sinon.stub(CP, 'spawn').returns(cp)
+  spawn.yields()
   done()
 })
 
 afterEach(function (done) {
-  CP.spawn.restore()
+  spawn.reset()
   done()
 })
 
@@ -44,8 +43,25 @@ describe('install', () => {
 
   it('uses npm to install the module', function (done) {
     Install(module, options, function () {
-      expect(CP.spawn.calledWith('npm', ['install', 'test', '-D'])).to.be.true()
+      expect(spawn.calledWith('npm', ['install', 'test', '-D'])).to.be.true()
       done()
+    })
+  })
+
+  describe('when process yields an error', function () {
+    var error
+
+    beforeEach(function (done) {
+      error = new Error('spawn err')
+      spawn.yields(error)
+      done()
+    })
+
+    it('yields the error', function (done) {
+      Install(module, options, function (err) {
+        expect(err).to.equal(error)
+        done()
+      })
     })
   })
 })
