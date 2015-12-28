@@ -5,20 +5,20 @@ const Lab = require('lab')
 const Proxyquire = require('proxyquire')
 const Sinon = require('sinon')
 
-var cp = new Events.EventEmitter()
-var winSpawn = Sinon.stub().returns(cp)
+const cp = new Events.EventEmitter()
+const winSpawn = Sinon.stub().returns(cp)
 
 const Spawn = Proxyquire('../lib/spawn', {
   'win-spawn': winSpawn
 })
 
-var lab = exports.lab = Lab.script()
+const lab = exports.lab = Lab.script()
 
-var describe = lab.describe
-var it = lab.it
-var beforeEach = lab.beforeEach
-var afterEach = lab.afterEach
-var expect = Code.expect
+const describe = lab.describe
+const it = lab.it
+const beforeEach = lab.beforeEach
+const afterEach = lab.afterEach
+const expect = Code.expect
 
 afterEach(function (done) {
   winSpawn.reset()

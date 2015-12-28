@@ -3,18 +3,18 @@ const Lab = require('lab')
 const Proxyquire = require('proxyquire')
 const Sinon = require('sinon')
 
-var spawn = Sinon.stub()
+const spawn = Sinon.stub()
 const Add = Proxyquire('../lib/add', {
   './spawn': spawn
 })
 
-var lab = exports.lab = Lab.script()
+const lab = exports.lab = Lab.script()
 
-var describe = lab.describe
-var it = lab.it
-var beforeEach = lab.beforeEach
-var afterEach = lab.afterEach
-var expect = Code.expect
+const describe = lab.describe
+const it = lab.it
+const beforeEach = lab.beforeEach
+const afterEach = lab.afterEach
+const expect = Code.expect
 
 beforeEach(function (done) {
   spawn.yields()
