@@ -6,12 +6,12 @@ const Instagit = require('..', {
   './lib/instagit': Sinon.stub().yields()
 })
 
-var lab = exports.lab = Lab.script()
+const lab = exports.lab = Lab.script()
 
-var describe = lab.describe
-var it = lab.it
-var beforeEach = lab.beforeEach
-var expect = Code.expect
+const describe = lab.describe
+const it = lab.it
+const beforeEach = lab.beforeEach
+const expect = Code.expect
 
 describe('usage', () => {
   var fn, modules, options, cb

@@ -3,21 +3,23 @@ const Lab = require('lab')
 const Proxyquire = require('proxyquire')
 const Sinon = require('sinon')
 
-var install = Sinon.stub().yields()
-var add = Sinon.stub().yields()
+const add = Sinon.stub().yields()
+const commit = Sinon.stub().yields()
+const install = Sinon.stub().yields()
 
 const Instagit = Proxyquire('../lib/instagit', {
   './add': add,
+  './commit': commit,
   './install': install
 })
 
-var lab = exports.lab = Lab.script()
+const lab = exports.lab = Lab.script()
 
-var describe = lab.describe
-var it = lab.it
-var beforeEach = lab.beforeEach
-var afterEach = lab.beforeEach
-var expect = Code.expect
+const describe = lab.describe
+const it = lab.it
+const beforeEach = lab.beforeEach
+const afterEach = lab.beforeEach
+const expect = Code.expect
 
 afterEach(function (done) {
   add.reset()
@@ -54,7 +56,8 @@ describe('instagit', () => {
     })
   })
 
-  it('commits the git addition', { skip: true }, function (done) {
+  it('commits the git addition', function (done) {
+    expect(commit.calledWith('test')).to.be.true()
     done()
   })
 })
