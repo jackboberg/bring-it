@@ -1,5 +1,11 @@
 # instagit
 
+[![version](https://img.shields.io/npm/v/instagit.svg?style=flat-square)][version]
+[![build](https://img.shields.io/travis/jackboberg/instagit.svg?style=flat-square)][build]
+[![coverage](https://img.shields.io/codeclimate/coverage/github/jackboberg/instagit.svg?style=flat-square)][coverage]
+[![code climate](https://img.shields.io/codeclimate/github/jackboberg/instagit.svg?style=flat-square)][climate]
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
+
 Simplifies installing and adding multiple npm modules to your git repository.
 
 ## Usage
@@ -42,3 +48,8 @@ Instagit(modules, options, done)
 - `done` yields Error and Boolean (Function)
 
 
+[version]: https://www.npmjs.com/package/instagit
+[build]: https://travis-ci.org/jackboberg/instagit
+[coverage]: https://codeclimate.com/github/jackboberg/instagit/coverage
+[climate]: https://codeclimate.com/github/jackboberg/instagit/code
+[license]: https://raw.githubusercontent.com/jackboberg/instagit/master/LICENSE
