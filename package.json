@@ -26,15 +26,15 @@
   },
   "homepage": "https://github.com/jackboberg/instagit#readme",
   "devDependencies": {
-    "code": "~1.5.0",
-    "lab": "~7.0.0",
-    "proxyquire": "~1.7.3",
-    "sinon": "~1.17.2",
-    "standard": "~5.3.1"
+    "code": "~4.1.0",
+    "lab": "~14.1.1",
+    "proxyquire": "~1.8.0",
+    "sinon": "~3.0.0",
+    "standard": "~10.0.2"
   },
   "dependencies": {
-    "concat-stream": "1.5.1",
-    "lodash.assign": "3.2.0",
+    "concat-stream": "1.6.0",
+    "lodash.assign": "4.2.0",
     "run-series": "1.1.4",
     "win-spawn": "2.0.0"
   }

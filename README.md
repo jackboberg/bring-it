@@ -1,5 +1,7 @@
 # instagit
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jackboberg/instagit.svg)](https://greenkeeper.io/)
+
 [![version](https://img.shields.io/npm/v/instagit.svg?style=flat-square)][version]
 [![build](https://img.shields.io/travis/jackboberg/instagit.svg?style=flat-square)][build]
 [![coverage](https://img.shields.io/codeclimate/coverage/github/jackboberg/instagit.svg?style=flat-square)][coverage]
